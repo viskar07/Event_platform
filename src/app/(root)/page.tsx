@@ -1,9 +1,17 @@
+import Collection from '@/components/shared/Collection'
 import { Button } from '@/components/ui/button'
+import { getAllEvents } from '@/lib/actions/event.action'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const Home = () => {
+const Home = async () => {
+  const events = await getAllEvents({
+    query: '',
+    category:'',
+    page: 1,
+    limit: 6,
+  });
 
   return (
     <>
@@ -36,6 +44,16 @@ const Home = () => {
             Search
             CategoryFilter
           </div>
+
+          <Collection
+            data={events?.data}
+            emptyTitle='No Events Found'
+            emptyStateSubtext="Come back later"
+            collectionType='All_Events'
+            limit={6}
+            page={1}
+            totalPages={2}
+          />
       </section>
 
     </>
