@@ -12,8 +12,8 @@ const poppins = Poppins({
   });
 
 export const metadata: Metadata = {
-  title: "Evently",
-  description: "Evently is platform for event management ",
+  title: "Clubsphere",
+  description: "Effortlessly Create Your Club or Organization ",
   icons: {
     icon:'/assets/images/logo.svg'
   }
