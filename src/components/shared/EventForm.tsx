@@ -27,7 +27,7 @@ import { IEvent } from "@/lib/database/models/event.model"
 
 type EventFromProps = {
   userId: string,
-  type: 'Join' | 'Update'
+  type: 'Create' | 'Update'
   event?:IEvent,
   eventId?:string,
 }
@@ -66,7 +66,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFromProps) => {
 
     }
 
-    if(type === 'Join'){
+    if(type === 'Create'){
       try {
         const newEvent = await createEvent({
           event: {...values, imageUrl:uploadedImageUrl},
