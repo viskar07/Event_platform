@@ -27,7 +27,7 @@ import { IEvent } from "@/lib/database/models/event.model"
 
 type EventFromProps = {
   userId: string,
-  type: 'Create' | 'Update'
+  type: 'Join' | 'Update'
   event?:IEvent,
   eventId?:string,
 }
@@ -66,7 +66,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFromProps) => {
 
     }
 
-    if(type === 'Create'){
+    if(type === 'Join'){
       try {
         const newEvent = await createEvent({
           event: {...values, imageUrl:uploadedImageUrl},
@@ -118,7 +118,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFromProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="Event Title" {...field} className=" input-field" />
+                  <Input placeholder="Club Title" {...field} className=" input-field" />
                 </FormControl>
 
                 <FormMessage />
@@ -146,7 +146,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFromProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl className="h-72">
-                  <Textarea placeholder="Description" {...field} className="textarea rounded-2xl" />
+                  <Textarea placeholder="About your club " {...field} className="textarea rounded-2xl" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -184,7 +184,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFromProps) => {
                       height={24}
                     />
 
-                    <Input placeholder="Event location or Online" {...field} className="input-field" />
+                    <Input placeholder="Location or Online" {...field} className="input-field" />
                   </div>
 
                 </FormControl>
@@ -331,7 +331,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFromProps) => {
         >
           {form.formState.isSubmitting ? (
             'Submitting...'
-          ): `${type} Event `}</Button>
+          ): `${type} Club `}</Button>
       </form>
     </Form>
   )
